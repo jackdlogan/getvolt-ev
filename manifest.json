@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Volt EV Calculator",
+  "version": "1.0.0",
+  "description": "Shows Expected Value (EV) of packs on getvolt.gg",
+  "host_permissions": [
+    "*://*.getvolt.gg/*"
+  ],
+  "icons": { "128": "getvoltev.png" },
+  "web_accessible_resources": [
+    {
+      "resources": ["getvoltev.png"],
+      "matches": ["*://*.getvolt.gg/*"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.getvolt.gg/*"],
+      "js": ["interceptor.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["*://*.getvolt.gg/*"],
+      "js": ["ui.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
